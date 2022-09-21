@@ -4,7 +4,7 @@
 function weekOfYear($date)
 {
     $year = date('y', strtotime($date));
-    $firstDay = date('l', '1-1-' . $year);
+    $firstDay = date('l', strtotime('1-1-' . $year));
     $daysOfWeek = array('Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
     //echo $firstDay.array_search($firstDay,$daysOfWeek);
     $dayOfYear = date('z', strtotime($date)) + 1;
