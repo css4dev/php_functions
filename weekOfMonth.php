@@ -2,5 +2,7 @@
 function weekOfMonth($date)
 {
     $year = date('y', strtotime($date));
-    return weekOfYear($date) - weekOfYear('1-' . $date . '-' . $year);
+    $month = date('m', strtotime($date));
+
+    return weekOfYear($date) - weekOfYear($year. '-'. $month . '-' . '01')+1;
 }
