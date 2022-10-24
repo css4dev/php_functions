@@ -2,6 +2,7 @@
 function firstAndEndDateOfWeek($month, $weekNum, $year)
 {
 
+   
     $firstDayOfMonth =$year. '-'. $month.'-01';
 
     $week = weekOfYear($firstDayOfMonth); 
@@ -12,7 +13,9 @@ function firstAndEndDateOfWeek($month, $weekNum, $year)
     $firstDay = date('l', strtotime($year.'-01-01'));
     $daysOfWeek = array('Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
     $shift = 7 - (array_search($firstDay, $daysOfWeek) );
-    $dayOfYear = ($weekNumOfYear - 2) * 7 + $shift ;
+        $firstDayOfWeek="Monday";
+    $holidayShift =  (array_search($firstDayOfWeek, $daysOfWeek) );
+    $dayOfYear = ($weekNumOfYear -$holidayShift) * 7 + $shift ;
     $firstDayOfWeek1 = date('Y-m-d', strtotime($year."-01-01" . " + " . $dayOfYear    . " days"));
    
         $firstDayOfWeek = $firstDayOfWeek1;
