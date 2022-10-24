@@ -4,10 +4,12 @@
 function weekOfYear($date)
 {
     $year = date('y', strtotime($date));
-    $firstDay = date('l', strtotime('01-01-' . $year));
+    $firstDay = date('l', strtotime($year.'-01-01'));
     $daysOfWeek = array('Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
-    $dayOfYear = date('z', strtotime($date)) + 1;
-    $shift = 7 - (array_search($firstDay, $daysOfWeek) + 1);
-    $weekOfYear =  floor((($dayOfYear - $shift) / 7 + 2));
+    $dayOfYear = date('z', strtotime($date)) ;
+    $shift = 7 - (array_search($firstDay, $daysOfWeek) );
+    $firstDayOfWeek="Monday";
+    $holidayShift =  (array_search($firstDayOfWeek, $daysOfWeek) );
+    $weekOfYear =  floor((($dayOfYear - $shift) / 7 + $holidayShift));
     return $weekOfYear;
 }
